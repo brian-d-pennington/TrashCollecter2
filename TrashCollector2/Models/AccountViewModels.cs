@@ -89,8 +89,8 @@ namespace TrashCollector2.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name= "Street Address")]
-        public string StringAddress { get; set; }
+        [Display(Name = "Street Address")]
+        public string StreetAddress { get; set; }
 
         [Required(ErrorMessage = "Zip is Required")]
         [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip")]
