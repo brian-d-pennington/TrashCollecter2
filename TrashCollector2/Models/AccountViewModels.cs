@@ -87,6 +87,14 @@ namespace TrashCollector2.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name= "Street Address")]
+        public string StringAddress { get; set; }
+
+        [Required(ErrorMessage = "Zip is Required")]
+        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip")]
+        public string Zip { get; set; }
     }
 
     public class ResetPasswordViewModel
