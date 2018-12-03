@@ -29,8 +29,8 @@ namespace TrashCollector2.Models
         {
             return new ApplicationDbContext();
         }
-        DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
-        DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }

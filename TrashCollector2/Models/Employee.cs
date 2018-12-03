@@ -11,10 +11,10 @@ namespace TrashCollector2.Models
         [Key]
         public int ID { get; set; }
         public string Email { get; set; }
-        public string UserName { get; set; }
+        public string EmployeeNumber { get; set; }
         public string Route { get; set; } // zip code driver assigned
 
-        //[ForeignKey]
+        // no foreign key necessary, as Employees are seeded by Admin, not log in
 
     }
 }

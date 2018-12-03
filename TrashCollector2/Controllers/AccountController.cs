@@ -158,6 +158,23 @@ namespace TrashCollector2.Controllers
         {
             if (ModelState.IsValid)
             {
+                var rowsToCheck = context.Employees.Select(c => c.Email); //employee should be in database before being
+                foreach (string r in rowsToCheck)                         //allowed to register
+                {
+                    if (model.UserRoles != "Employee")
+                    {
+                        break;
+                    }
+                    else if (model.UserRoles == "Employee" && model.Email == r)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
+                }
+
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -178,9 +195,19 @@ namespace TrashCollector2.Controllers
                                           .ToList(), "Name", "Name");
                 AddErrors(result);
             }
-
+            /*AssignCustomer(model);*/ // adds to Customers db table
             // If we got this far, something failed, redisplay form   
             return View(model);
+        }
+
+        public void AssignCustomer(RegisterViewModel model)
+        {
+            if (model.UserRoles == "Customer")
+            {
+                context.Customers.Add(
+                new Models.Customer { Email = model.Email, UserName = model.UserName, StreetAddress = model.StreetAddress, Zip = model.Zip });
+                
+            }
         }
 
         //

@@ -15,10 +15,14 @@ namespace TrashCollector2.Migrations
 
         protected override void Seed(TrashCollector2.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            //context.Employees.AddOrUpdate(
+            //   new Models.Employee { Email = "jitsche@gmail.com", EmployeeNumber = "e5452", Route = "53207" },
+            //   new Models.Employee { Email = "hjazz@yahoo.com", EmployeeNumber = "e5451", Route = "53208" },
+            //   new Models.Employee { Email = "mhunt@aol.com", EmployeeNumber = "e5450", Route = "53204" });
+
+            // employees seeded with employeesSeeded migration
+
         }
     }
 }
