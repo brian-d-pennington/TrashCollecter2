@@ -22,4 +22,5 @@ namespace TrashCollector2.Models
         public ApplicationUser ApplicationUser { get; set; }
 
     }
+
 }

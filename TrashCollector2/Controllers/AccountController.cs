@@ -174,7 +174,7 @@ namespace TrashCollector2.Controllers
                         return View("Error");
                     }
                 }
-
+                AssignCustomer(model); // assigns input to Customers table
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -195,7 +195,7 @@ namespace TrashCollector2.Controllers
                                           .ToList(), "Name", "Name");
                 AddErrors(result);
             }
-            /*AssignCustomer(model);*/ // adds to Customers db table
+            
             // If we got this far, something failed, redisplay form   
             return View(model);
         }
@@ -206,7 +206,7 @@ namespace TrashCollector2.Controllers
             {
                 context.Customers.Add(
                 new Models.Customer { Email = model.Email, UserName = model.UserName, StreetAddress = model.StreetAddress, Zip = model.Zip });
-                
+                context.SaveChanges();
             }
         }
 

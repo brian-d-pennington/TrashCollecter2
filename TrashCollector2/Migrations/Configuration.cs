@@ -23,6 +23,10 @@ namespace TrashCollector2.Migrations
 
             // employees seeded with employeesSeeded migration
 
+            //context.Customers.AddOrUpdate(
+            //    new Models.Customer { Email = "bblobb@gmail.com", UserName = "bblobb", StreetAddress = "3332 S Illinois Ave", Zip = "53207" });
+                
+            // had to seed one preiously registered Customer to database because SaveChanges() wasn't used
         }
     }
 }

@@ -17,6 +17,6 @@ namespace TrashCollector2.Controllers
             return View();
         }
 
-        
+       
     }
 }
