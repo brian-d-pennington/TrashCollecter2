@@ -23,7 +23,7 @@ namespace TrashCollector2
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-minty.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
     }

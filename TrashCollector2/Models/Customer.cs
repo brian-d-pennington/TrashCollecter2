@@ -27,11 +27,11 @@ namespace TrashCollector2.Models
 
         public DaysOfTheWeek DaysOfTheWeeks { get; set; }
 
-        public DateTime SpecialRequest { get; set; }
+        public DateTime? SpecialRequest { get; set; }
 
-        public DateTime SuspendStartDate { get; set; }
+        public DateTime? SuspendStartDate { get; set; }
 
-        public DateTime ResumeServiceDate { get; set; }
+        public DateTime? ResumeServiceDate { get; set; }
 
         public double AccumulatedCharges { get; set; }
 

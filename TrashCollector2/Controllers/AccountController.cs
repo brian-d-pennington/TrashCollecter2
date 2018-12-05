@@ -206,7 +206,12 @@ namespace TrashCollector2.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 context.Customers.Add(
-                new Models.Customer { Email = model.Email, UserName = model.UserName, StreetAddress = model.StreetAddress, Zip = model.Zip, ApplicationId = userId });
+                new Models.Customer { Email = model.Email,
+                                      UserName = model.UserName,
+                                      StreetAddress = model.StreetAddress,
+                                      Zip = model.Zip, ApplicationId = userId,
+                                      DaysOfTheWeeks = context.DaysOfTheWeeks.First(), //default
+                                      AccumulatedCharges = 0 });
                 context.SaveChanges();
             }
         }
