@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace TrashCollector2.Models
 {
@@ -21,6 +22,20 @@ namespace TrashCollector2.Models
 
         public ApplicationUser ApplicationUser { get; set; }
 
+        [ForeignKey("DaysOfTheWeeks")]
+        public int WeekdayID { get; set; }
+
+        public DaysOfTheWeek DaysOfTheWeeks { get; set; }
+
+        public DateTime SpecialRequest { get; set; }
+
+        public DateTime SuspendStartDate { get; set; }
+
+        public DateTime ResumeServiceDate { get; set; }
+
+        public double AccumulatedCharges { get; set; }
+
     }
 
+    
 }

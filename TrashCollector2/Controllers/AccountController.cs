@@ -204,8 +204,9 @@ namespace TrashCollector2.Controllers
         {
             if (model.UserRoles == "Customer")
             {
+                var userId = User.Identity.GetUserId();
                 context.Customers.Add(
-                new Models.Customer { Email = model.Email, UserName = model.UserName, StreetAddress = model.StreetAddress, Zip = model.Zip });
+                new Models.Customer { Email = model.Email, UserName = model.UserName, StreetAddress = model.StreetAddress, Zip = model.Zip, ApplicationId = userId });
                 context.SaveChanges();
             }
         }
