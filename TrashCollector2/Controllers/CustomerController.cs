@@ -15,24 +15,21 @@ namespace TrashCollector2.Controllers
         
 
         // GET: Customer
+        [HttpGet]
         public ActionResult Index()
         {
             var customerToFind = User.Identity.GetUserId();
-            var foundCustomer = context.Customers.Where(u => u.ApplicationId == customerToFind);
-            return View(foundCustomer);
+            Customer loggedInCustomer = context.Customers.Where(u => u.ApplicationId == customerToFind).SingleOrDefault();
+            return View(loggedInCustomer);
         }
 
+        // GET: Edit page
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Edit(Customer loggedInCustomer, DaysOfTheWeek daysOfTheWeek)
         {
-            var weekdays = context.DaysOfTheWeeks.ToList();
-            return View();
+            //ViewBag.Days = new SelectList(context.DaysOfTheWeeks.ToList(), "Day");
+            loggedInCustomer.Days = context.DaysOfTheWeeks.ToList();
+            return View(loggedInCustomer);
         }
-
-        //[HttpPost]
-        //public ActionResult Create(Customer foundCustomer)
-        //{
-
-        //}
     }
 }

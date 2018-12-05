@@ -19,7 +19,7 @@ namespace TrashCollector2.Controllers
             {
                 var user = User.Identity;
                 ViewBag.Name = user.Name;
-
+                //AssignCustomer(RegisterViewModel model);
                 ViewBag.displayMenu = "No";
 
                 if (isAdminUser())
@@ -54,5 +54,29 @@ namespace TrashCollector2.Controllers
             }
             return false;
         }
+
+
+        /*     } */       //public void AssignCustomer(RegisterViewModel model)
+                          //{
+                          //    ApplicationDbContext context = new ApplicationDbContext();
+                          //    if (model.UserRoles == "Customer")
+                          //    {
+                          //        var userId = User.Identity.GetUserId();
+
+        //        context.Customers.Add(
+        //        new Models.Customer
+        //        {
+        //            Email = model.Email,
+        //            UserName = model.UserName,
+        //            StreetAddress = model.StreetAddress,
+        //            Zip = model.Zip,
+        //            ApplicationId = userId,
+        //            DaysOfTheWeeks = context.DaysOfTheWeeks.First(), //default
+        //            AccumulatedCharges = 0
+        //        });
+        //        context.SaveChanges();
+
+
+        //    }
     }
 }

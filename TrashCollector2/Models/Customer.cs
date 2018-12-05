@@ -13,8 +13,11 @@ namespace TrashCollector2.Models
         [Key]
         public int ID { get; set; }
         public string Email { get; set; }
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
+        [Display(Name = "Zip Code")]
         public string Zip { get; set; }
 
         [ForeignKey("ApplicationUser")]
@@ -23,17 +26,20 @@ namespace TrashCollector2.Models
         public ApplicationUser ApplicationUser { get; set; }
 
         [ForeignKey("DaysOfTheWeeks")]
+        [Display(Name = "Weekly Pickup Day")]
         public int WeekdayID { get; set; }
 
         public DaysOfTheWeek DaysOfTheWeeks { get; set; }
-
+        [Display(Name = "One Time Pickup")]
         public DateTime? SpecialRequest { get; set; }
-
+        [Display(Name = "Suspend Service On")]
         public DateTime? SuspendStartDate { get; set; }
-
+        [Display(Name = "Resume Service By")]
         public DateTime? ResumeServiceDate { get; set; }
-
+        [Display(Name = "Pending Charges")]
         public double AccumulatedCharges { get; set; }
+
+        public IEnumerable<DaysOfTheWeek> Days { get; set; }
 
     }
 

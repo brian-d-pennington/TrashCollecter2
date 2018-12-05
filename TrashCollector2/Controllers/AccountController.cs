@@ -174,7 +174,7 @@ namespace TrashCollector2.Controllers
                         return View("Error");
                     }
                 }
-                AssignCustomer(model); // assigns input to Customers table
+                
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -188,7 +188,9 @@ namespace TrashCollector2.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
                     //Assign Role to user Here      
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    //Ends Here    
+                    AssignCustomer(model, user.Id);
+                    //Ends Here 
+                    // Adds user to Customers table
                     return RedirectToAction("Index", "Users");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
@@ -200,19 +202,26 @@ namespace TrashCollector2.Controllers
             return View(model);
         }
 
-        public void AssignCustomer(RegisterViewModel model)
+        public void AssignCustomer(RegisterViewModel model, string userId)
         {
             if (model.UserRoles == "Customer")
             {
-                var userId = User.Identity.GetUserId();
+                //var userId = User.Identity.GetUserId();
+
                 context.Customers.Add(
-                new Models.Customer { Email = model.Email,
-                                      UserName = model.UserName,
-                                      StreetAddress = model.StreetAddress,
-                                      Zip = model.Zip, ApplicationId = userId,
-                                      DaysOfTheWeeks = context.DaysOfTheWeeks.First(), //default
-                                      AccumulatedCharges = 0 });
+                new Models.Customer
+                {
+                    Email = model.Email,
+                    UserName = model.UserName,
+                    StreetAddress = model.StreetAddress,
+                    Zip = model.Zip,
+                    ApplicationId = userId,
+                    DaysOfTheWeeks = context.DaysOfTheWeeks.First(), //default
+                    AccumulatedCharges = 0
+                });
                 context.SaveChanges();
+
+
             }
         }
 
