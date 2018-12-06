@@ -7,13 +7,13 @@ namespace TrashCollector2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DateTimeNullable : IMigrationMetadata
+    public sealed partial class reInitialize : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DateTimeNullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(reInitialize));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812051607040_DateTimeNullable"; }
+            get { return "201812062116045_reInitialize"; }
         }
         
         string IMigrationMetadata.Source

@@ -204,37 +204,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812051551275_init.cs" />
-    <Compile Include="Migrations\201812051551275_init.Designer.cs">
-      <DependentUpon>201812051551275_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812051607040_DateTimeNullable.cs" />
-    <Compile Include="Migrations\201812051607040_DateTimeNullable.Designer.cs">
-      <DependentUpon>201812051607040_DateTimeNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812061402133_DailyReset.cs" />
-    <Compile Include="Migrations\201812061402133_DailyReset.Designer.cs">
-      <DependentUpon>201812061402133_DailyReset.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812061537191_updateCustomerTable.cs" />
-    <Compile Include="Migrations\201812061537191_updateCustomerTable.Designer.cs">
-      <DependentUpon>201812061537191_updateCustomerTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812061649516_CustomerTableUpdate.cs" />
-    <Compile Include="Migrations\201812061649516_CustomerTableUpdate.Designer.cs">
-      <DependentUpon>201812061649516_CustomerTableUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812061701098_anotherCustomerTabEdit.cs" />
-    <Compile Include="Migrations\201812061701098_anotherCustomerTabEdit.Designer.cs">
-      <DependentUpon>201812061701098_anotherCustomerTabEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812062019001_UpdateEmployeeTable.cs" />
-    <Compile Include="Migrations\201812062019001_UpdateEmployeeTable.Designer.cs">
-      <DependentUpon>201812062019001_UpdateEmployeeTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812062111227_TableUpdates.cs" />
-    <Compile Include="Migrations\201812062111227_TableUpdates.Designer.cs">
-      <DependentUpon>201812062111227_TableUpdates.cs</DependentUpon>
+    <Compile Include="Migrations\201812062116045_reInitialize.cs" />
+    <Compile Include="Migrations\201812062116045_reInitialize.Designer.cs">
+      <DependentUpon>201812062116045_reInitialize.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -331,29 +303,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812051551275_init.resx">
-      <DependentUpon>201812051551275_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812051607040_DateTimeNullable.resx">
-      <DependentUpon>201812051607040_DateTimeNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812061402133_DailyReset.resx">
-      <DependentUpon>201812061402133_DailyReset.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812061537191_updateCustomerTable.resx">
-      <DependentUpon>201812061537191_updateCustomerTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812061649516_CustomerTableUpdate.resx">
-      <DependentUpon>201812061649516_CustomerTableUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812061701098_anotherCustomerTabEdit.resx">
-      <DependentUpon>201812061701098_anotherCustomerTabEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812062019001_UpdateEmployeeTable.resx">
-      <DependentUpon>201812062019001_UpdateEmployeeTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812062111227_TableUpdates.resx">
-      <DependentUpon>201812062111227_TableUpdates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812062116045_reInitialize.resx">
+      <DependentUpon>201812062116045_reInitialize.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

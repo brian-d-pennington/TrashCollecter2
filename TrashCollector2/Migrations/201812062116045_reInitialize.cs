@@ -3,7 +3,7 @@ namespace TrashCollector2.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class reInitialize : DbMigration
     {
         public override void Up()
         {
@@ -18,10 +18,19 @@ namespace TrashCollector2.Migrations
                         Zip = c.String(),
                         ApplicationId = c.String(maxLength: 128),
                         WeekdayID = c.Int(nullable: false),
-                        SpecialRequest = c.DateTime(nullable: false),
-                        SuspendStartDate = c.DateTime(nullable: false),
-                        ResumeServiceDate = c.DateTime(nullable: false),
+                        SpecialRequest = c.DateTime(),
+                        SuspendStartDate = c.DateTime(),
+                        ResumeServiceDate = c.DateTime(),
                         AccumulatedCharges = c.Double(nullable: false),
+                        Day = c.Int(nullable: false),
+                        Month = c.Int(nullable: false),
+                        Year = c.Int(nullable: false),
+                        Day2 = c.Int(nullable: false),
+                        Month2 = c.Int(nullable: false),
+                        Year2 = c.Int(nullable: false),
+                        Day3 = c.Int(nullable: false),
+                        Month3 = c.Int(nullable: false),
+                        Year3 = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
@@ -104,8 +113,14 @@ namespace TrashCollector2.Migrations
                         Email = c.String(),
                         EmployeeNumber = c.String(),
                         Route = c.String(),
+                        ApplicationId = c.String(maxLength: 128),
+                        CustomerId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .Index(t => t.ApplicationId)
+                .Index(t => t.CustomerId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -122,12 +137,16 @@ namespace TrashCollector2.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Employees", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.Employees", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Customers", "WeekdayID", "dbo.DaysOfTheWeeks");
             DropForeignKey("dbo.Customers", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Employees", new[] { "CustomerId" });
+            DropIndex("dbo.Employees", new[] { "ApplicationId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
