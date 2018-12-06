@@ -12,7 +12,7 @@ namespace TrashCollector2.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
-        
+
 
         // GET: Customer
         [HttpGet]
@@ -25,11 +25,28 @@ namespace TrashCollector2.Controllers
 
         // GET: Edit page
         [HttpGet]
-        public ActionResult Edit(Customer loggedInCustomer, DaysOfTheWeek daysOfTheWeek)
+        public ActionResult Edit(Customer loggedInCustomer)
         {
-            //ViewBag.Days = new SelectList(context.DaysOfTheWeeks.ToList(), "Day");
             loggedInCustomer.Days = context.DaysOfTheWeeks.ToList();
             return View(loggedInCustomer);
+        }
+
+        //POST
+        [HttpPost]
+        public ActionResult Edit()
+        {
+            var getCurrentUser = User.Identity.GetUserId();
+            Customer customerToEdit = context.Customers.Where(u => u.ApplicationId == getCurrentUser).SingleOrDefault();
+            Customer customer = new Customer();
+            //DateTime date1 = new DateTime(year, month, day);
+
+            //customerToEdit.WeekdayID = customer.Day;
+            customerToEdit.SpecialRequest = customer.SpecialRequest;
+            customerToEdit.SuspendStartDate = customer.SuspendStartDate;
+            customerToEdit.ResumeServiceDate = customer.ResumeServiceDate;
+
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

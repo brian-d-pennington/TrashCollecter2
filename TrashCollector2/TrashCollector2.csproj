@@ -212,6 +212,14 @@
     <Compile Include="Migrations\201812051607040_DateTimeNullable.Designer.cs">
       <DependentUpon>201812051607040_DateTimeNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812061402133_DailyReset.cs" />
+    <Compile Include="Migrations\201812061402133_DailyReset.Designer.cs">
+      <DependentUpon>201812061402133_DailyReset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812061537191_updateCustomerTable.cs" />
+    <Compile Include="Migrations\201812061537191_updateCustomerTable.Designer.cs">
+      <DependentUpon>201812061537191_updateCustomerTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -312,6 +320,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812051607040_DateTimeNullable.resx">
       <DependentUpon>201812051607040_DateTimeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812061402133_DailyReset.resx">
+      <DependentUpon>201812061402133_DailyReset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812061537191_updateCustomerTable.resx">
+      <DependentUpon>201812061537191_updateCustomerTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
