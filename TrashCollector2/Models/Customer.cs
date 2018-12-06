@@ -41,9 +41,16 @@ namespace TrashCollector2.Models
 
         public IEnumerable<DaysOfTheWeek> Days { get; set; }
 
-        public IEnumerable<DateTime> Day { get; set; }
-        public IEnumerable<DateTime> Month { get; set; }
-        public IEnumerable<DateTime> Year { get; set; }
+        public int Day { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
+
+        public int Day2 { get; set; }
+        public int Month2 { get; set; }
+        public int Year2 { get; set; }
+        public int Day3 { get; set; }
+        public int Month3 { get; set; }
+        public int Year3 { get; set; }
 
     }
 

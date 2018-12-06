@@ -39,18 +39,18 @@
 <div class="form-group">
     @Html.LabelFor(model => model.SuspendStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.Day, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
-        @Html.DropDownListFor(model => model.Month, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month")
-        @Html.DropDownListFor(model => model.Year, Enumerable.Range(2018, 2022).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
+        @Html.DropDownListFor(model => model.Day2, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
+        @Html.DropDownListFor(model => model.Month2, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month")
+        @Html.DropDownListFor(model => model.Year2, Enumerable.Range(2018, 2022).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
     </div>
 </div>
 
 <div class="form-group">
     @Html.LabelFor(model => model.ResumeServiceDate, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.Day, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
-        @Html.DropDownListFor(model => model.Month, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month")
-        @Html.DropDownListFor(model => model.Year, Enumerable.Range(2018, 2022).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
+        @Html.DropDownListFor(model => model.Day3, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
+        @Html.DropDownListFor(model => model.Month3, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month")
+        @Html.DropDownListFor(model => model.Year3, Enumerable.Range(2018, 2022).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
     </div>
 </div>
 

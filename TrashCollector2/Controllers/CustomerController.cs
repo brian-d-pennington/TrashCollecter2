@@ -25,25 +25,27 @@ namespace TrashCollector2.Controllers
 
         // GET: Edit page
         [HttpGet]
-        public ActionResult Edit(Customer loggedInCustomer)
+        public ActionResult Edit(int id)
         {
+            var loggedInCustomer = context.Customers.Where(c => c.ID == id).Single();
             loggedInCustomer.Days = context.DaysOfTheWeeks.ToList();
             return View(loggedInCustomer);
         }
 
         //POST
         [HttpPost]
-        public ActionResult Edit()
+        public ActionResult Edit(Customer loggedInCustomer)
         {
             var getCurrentUser = User.Identity.GetUserId();
             Customer customerToEdit = context.Customers.Where(u => u.ApplicationId == getCurrentUser).SingleOrDefault();
-            Customer customer = new Customer();
-            //DateTime date1 = new DateTime(year, month, day);
+            DateTime SpecialRequest = new DateTime(loggedInCustomer.Year, loggedInCustomer.Month, loggedInCustomer.Day);
+            DateTime SuspendStartDate = new DateTime(loggedInCustomer.Year2, loggedInCustomer.Month2, loggedInCustomer.Day2);
+            DateTime ResumeServiceDate = new DateTime(loggedInCustomer.Year3, loggedInCustomer.Month3, loggedInCustomer.Day3);
 
-            //customerToEdit.WeekdayID = customer.Day;
-            customerToEdit.SpecialRequest = customer.SpecialRequest;
-            customerToEdit.SuspendStartDate = customer.SuspendStartDate;
-            customerToEdit.ResumeServiceDate = customer.ResumeServiceDate;
+            customerToEdit.WeekdayID = loggedInCustomer.WeekdayID;
+            customerToEdit.SpecialRequest = SpecialRequest;
+            customerToEdit.SuspendStartDate = SuspendStartDate;
+            customerToEdit.ResumeServiceDate = ResumeServiceDate;
 
             context.SaveChanges();
             return RedirectToAction("Index");

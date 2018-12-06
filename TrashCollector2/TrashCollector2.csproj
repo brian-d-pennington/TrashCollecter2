@@ -220,6 +220,14 @@
     <Compile Include="Migrations\201812061537191_updateCustomerTable.Designer.cs">
       <DependentUpon>201812061537191_updateCustomerTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812061649516_CustomerTableUpdate.cs" />
+    <Compile Include="Migrations\201812061649516_CustomerTableUpdate.Designer.cs">
+      <DependentUpon>201812061649516_CustomerTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812061701098_anotherCustomerTabEdit.cs" />
+    <Compile Include="Migrations\201812061701098_anotherCustomerTabEdit.Designer.cs">
+      <DependentUpon>201812061701098_anotherCustomerTabEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -326,6 +334,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812061537191_updateCustomerTable.resx">
       <DependentUpon>201812061537191_updateCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812061649516_CustomerTableUpdate.resx">
+      <DependentUpon>201812061649516_CustomerTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812061701098_anotherCustomerTabEdit.resx">
+      <DependentUpon>201812061701098_anotherCustomerTabEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
