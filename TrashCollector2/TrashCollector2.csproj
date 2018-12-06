@@ -228,6 +228,14 @@
     <Compile Include="Migrations\201812061701098_anotherCustomerTabEdit.Designer.cs">
       <DependentUpon>201812061701098_anotherCustomerTabEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812062019001_UpdateEmployeeTable.cs" />
+    <Compile Include="Migrations\201812062019001_UpdateEmployeeTable.Designer.cs">
+      <DependentUpon>201812062019001_UpdateEmployeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812062111227_TableUpdates.cs" />
+    <Compile Include="Migrations\201812062111227_TableUpdates.Designer.cs">
+      <DependentUpon>201812062111227_TableUpdates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -304,10 +312,10 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -340,6 +348,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812061701098_anotherCustomerTabEdit.resx">
       <DependentUpon>201812061701098_anotherCustomerTabEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812062019001_UpdateEmployeeTable.resx">
+      <DependentUpon>201812062019001_UpdateEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812062111227_TableUpdates.resx">
+      <DependentUpon>201812062111227_TableUpdates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

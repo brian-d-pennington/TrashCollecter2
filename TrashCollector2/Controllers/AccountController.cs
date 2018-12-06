@@ -158,23 +158,23 @@ namespace TrashCollector2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var rowsToCheck = context.Employees.Select(c => c.Email); //employee should be in database before being
-                foreach (string r in rowsToCheck)                         //allowed to register
-                {
-                    if (model.UserRoles != "Employee")
-                    {
-                        break;
-                    }
-                    else if (model.UserRoles == "Employee" && model.Email == r)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        return View("Error");
-                    }
-                }
-                
+                //var rowsToCheck = context.Employees.Select(c => c.Email); //employee should be in database before being
+                //foreach (string r in rowsToCheck)                         //allowed to register
+                //{
+                //    if (model.UserRoles != "Employee")
+                //    {
+                //        break;
+                //    }
+                //    else if (model.UserRoles == "Employee" && model.Email == r)
+                //    {
+                //        break;
+                //    }
+                //    else
+                //    {
+                //        return View("Error");  // THIS SECTION GETS COMMENTED OUT
+                //    }                          // WHEN ADMIN USER REGISTERS EMPLOYEES
+                //}
+
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -188,7 +188,7 @@ namespace TrashCollector2.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
                     //Assign Role to user Here      
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    AssignCustomer(model, user.Id);
+                    AssignUser(model, user.Id);
                     //Ends Here 
                     // Adds user to Customers table
                     return RedirectToAction("Index", "Users");
@@ -202,7 +202,7 @@ namespace TrashCollector2.Controllers
             return View(model);
         }
 
-        public void AssignCustomer(RegisterViewModel model, string userId)
+        public void AssignUser(RegisterViewModel model, string userId)
         {
             if (model.UserRoles == "Customer")
             {
@@ -216,12 +216,32 @@ namespace TrashCollector2.Controllers
                     StreetAddress = model.StreetAddress,
                     Zip = model.Zip,
                     ApplicationId = userId,
-                    DaysOfTheWeeks = context.DaysOfTheWeeks.First(), //default
-                    AccumulatedCharges = 0
+                    WeekdayID = context.DaysOfTheWeeks.Select(d => d.Id).First(), //default
+                    AccumulatedCharges = 0,
+                    Day = 1,
+                    Month = 1,
+                    Year = 2018,
+                    Day2 = 1,
+                    Month2 = 1,
+                    Year2 = 2018,
+                    Day3 = 1,
+                    Month3 = 1,
+                    Year3 = 2018
                 });
                 context.SaveChanges();
 
 
+            }
+            else if (model.UserRoles == "Employee")
+            {
+                context.Employees.Add(
+                new Models.Employee
+                {
+                    Email = model.Email,
+                    Route = model.Zip,
+                    ApplicationId = userId
+                });
+                context.SaveChanges();
             }
         }
 

@@ -25,11 +25,13 @@ namespace TrashCollector2.Models
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        [ForeignKey("DaysOfTheWeeks")]
+        [ForeignKey("DaysOfTheWeek")]
         [Display(Name = "Weekly Pickup Day")]
         public int WeekdayID { get; set; }
 
-        public DaysOfTheWeek DaysOfTheWeeks { get; set; }
+        public DaysOfTheWeek DaysOfTheWeek { get; set; }
+
+        
         [Display(Name = "One Time Pickup")]
         public DateTime? SpecialRequest { get; set; }
         [Display(Name = "Suspend Service On")]
@@ -38,8 +40,6 @@ namespace TrashCollector2.Models
         public DateTime? ResumeServiceDate { get; set; }
         [Display(Name = "Pending Charges")]
         public double AccumulatedCharges { get; set; }
-
-        public IEnumerable<DaysOfTheWeek> Days { get; set; }
 
         public int Day { get; set; }
         public int Month { get; set; }
@@ -51,6 +51,8 @@ namespace TrashCollector2.Models
         public int Day3 { get; set; }
         public int Month3 { get; set; }
         public int Year3 { get; set; }
+        public IEnumerable<DaysOfTheWeek> DaysOfTheWeeks { get; set; }
+        public IEnumerable<DaysOfTheWeek> Days { get; set; }
 
     }
 
