@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201812071530045_DriverRoutesTable2.Designer.cs">
       <DependentUpon>201812071530045_DriverRoutesTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812072113066_addToDriverRouteTable.cs" />
+    <Compile Include="Migrations\201812072113066_addToDriverRouteTable.Designer.cs">
+      <DependentUpon>201812072113066_addToDriverRouteTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -303,10 +307,12 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\DriverRoute\Index.cshtml" />
+    <Content Include="Views\DriverRoute\Delete.cshtml" />
+    <Content Include="Views\DriverRoute\Complete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DriverRoute\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812071530045_DriverRoutesTable2.resx">
       <DependentUpon>201812071530045_DriverRoutesTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812072113066_addToDriverRouteTable.resx">
+      <DependentUpon>201812072113066_addToDriverRouteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

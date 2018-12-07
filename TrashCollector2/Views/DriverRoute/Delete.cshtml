@@ -1,0 +1,32 @@
+﻿@model TrashCollector2.Models.DriverRoute
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Mark this pickup as complete?</h3>
+<div>
+    <h4>DriverRoute</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.Label("Customer Addresses")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.StreetAddress)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Complete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Today's Route", "Index")
+        </div>
+    }
+</div>
