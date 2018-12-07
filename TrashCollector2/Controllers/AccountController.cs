@@ -216,7 +216,7 @@ namespace TrashCollector2.Controllers
                     StreetAddress = model.StreetAddress,
                     Zip = model.Zip,
                     ApplicationId = userId,
-                    WeekdayID = context.DaysOfTheWeeks.Select(d => d.Id).First(), //default
+                    WeekdayID = 1,
                     AccumulatedCharges = 0,
                     Day = 1,
                     Month = 1,

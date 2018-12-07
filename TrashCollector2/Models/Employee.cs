@@ -20,10 +20,6 @@ namespace TrashCollector2.Models
         public string ApplicationId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
-        [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
-
-        public Customer Customer { get; set; }
 
     }
 }

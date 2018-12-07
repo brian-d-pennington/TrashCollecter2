@@ -28,7 +28,6 @@ namespace TrashCollector2.Models
         [ForeignKey("DaysOfTheWeek")]
         [Display(Name = "Weekly Pickup Day")]
         public int WeekdayID { get; set; }
-
         public DaysOfTheWeek DaysOfTheWeek { get; set; }
 
         

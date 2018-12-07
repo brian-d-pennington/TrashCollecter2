@@ -11,7 +11,7 @@ namespace TrashCollector2.Models
         [Key]
         public int Id { get; set; }
 
-        public string Day { get; set; }
+        public string Weekday { get; set; }
 
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector2.Models;
+using System.Data.Entity;
 
 namespace TrashCollector2.Controllers
 {
@@ -19,7 +20,7 @@ namespace TrashCollector2.Controllers
         public ActionResult Index()
         {
             var customerToFind = User.Identity.GetUserId();
-            Customer loggedInCustomer = context.Customers.Where(u => u.ApplicationId == customerToFind).SingleOrDefault();
+            var loggedInCustomer = context.Customers.Include(d => d.DaysOfTheWeek).Where(u => u.ApplicationId == customerToFind).SingleOrDefault();
             return View(loggedInCustomer);
         }
 
