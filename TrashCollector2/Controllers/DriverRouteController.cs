@@ -14,30 +14,22 @@ namespace TrashCollector2.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
-        List<DriverRoute> todaysRoute;
-
+        public List<DriverRoute> todaysRoute;
+        
         // GET: DriverRoute
         [HttpGet]
         public ActionResult Index()
         {
-            context.Database.ExecuteSqlCommand("TRUNCATE TABLE [DriverRoutes]");
-            string today = DateTime.Today.DayOfWeek.ToString();
-            var driverToFind = User.Identity.GetUserId();
-            Employee employeeRoute = context.Employees.Where(u => u.ApplicationId == driverToFind).SingleOrDefault();
-            var customerPickupDay = context.Customers.Include(d => d.DaysOfTheWeek.Weekday);
-            var customersInRoute = context.Customers.Include(d => d.DaysOfTheWeek).Where(c => c.Zip == employeeRoute.Route && c.DaysOfTheWeek.Weekday == today);
-            foreach (var c in customersInRoute)
+            try
             {
-                DriverRoute driverRoute = new DriverRoute()
-                {
-                    EmployeeId = employeeRoute.ID,
-                    CustomerId = c.ID
-                };
-                context.DriverRoutes.Add(driverRoute);
+                string dayOfRoute = DateTime.Today.DayOfWeek.ToString();
+                GenerateRouteByDay(dayOfRoute);
+                return View(todaysRoute);
             }
-            context.SaveChanges();
-            var defaultRouteView = context.DriverRoutes.Include(d => d.Employee).Include(c => c.Customer).ToList();
-            return View(defaultRouteView);
+            catch
+            {
+                return View("NoCustomers");
+            }
         }
 
         [HttpGet]
@@ -53,8 +45,6 @@ namespace TrashCollector2.Controllers
             {
                 return View("NoCustomers");
             }
-
-            
         }
 
         [HttpGet]
@@ -142,7 +132,7 @@ namespace TrashCollector2.Controllers
                 context.DriverRoutes.Add(driverRoute);
             }
             context.SaveChanges();
-            var todaysRoute = context.DriverRoutes.Include(d => d.Employee).Include(c => c.Customer).ToList();
+            todaysRoute = context.DriverRoutes.Include(d => d.Employee).Include(c => c.Customer).ToList();
             return todaysRoute;
         }
 

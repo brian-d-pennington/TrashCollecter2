@@ -6,9 +6,6 @@
 
 <h2>Thursday's Route</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -35,4 +32,24 @@
 </table>
 <p>
     @Html.ActionLink("Back to Today's Route", "Index")
+</p>
+<p>
+    <ul style="list-style:none">
+        <li>
+            @Html.ActionLink("Monday's Route", "DayOne")
+
+        </li>
+        <li>
+            @Html.ActionLink("Tuesday's Route", "DayTwo")
+
+        </li>
+        <li>
+            @Html.ActionLink("Wednesday's Route", "DayThree")
+
+        </li>
+        <li>
+            @Html.ActionLink("Friday's Route", "DayFive")
+
+        </li>
+    </ul>
 </p>
