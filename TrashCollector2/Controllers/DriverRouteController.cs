@@ -14,6 +14,8 @@ namespace TrashCollector2.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
+        public List<DriverRoute> todaysRoute;
+
         // GET: DriverRoute
         [HttpGet]
         public ActionResult Index()
@@ -34,8 +36,71 @@ namespace TrashCollector2.Controllers
                 context.DriverRoutes.Add(driverRoute);
             }
             context.SaveChanges();
-            var todaysRoute = context.DriverRoutes.Include(d => d.Employee).Include(c => c.Customer).ToList();
+            var defaultRouteView = context.DriverRoutes.Include(d => d.Employee).Include(c => c.Customer).ToList();
+            return View(defaultRouteView);
+        }
+
+        [HttpGet]
+        public ActionResult DayOne()
+        {
+            int dayOfRoute = 1;
+            GenerateRouteByDay(dayOfRoute);
             return View(todaysRoute);
+        }
+
+        [HttpGet]
+        public ActionResult DayTwo()
+        {
+            int dayOfRoute = 2;
+            GenerateRouteByDay(dayOfRoute);
+            return View(todaysRoute);
+        }
+
+        [HttpGet]
+        public ActionResult DayThree()
+        {
+            int dayOfRoute = 3;
+            GenerateRouteByDay(dayOfRoute);
+            return View(todaysRoute);
+        }
+
+        [HttpGet]
+        public ActionResult DayFour()
+        {
+            int dayOfRoute = 4;
+            GenerateRouteByDay(dayOfRoute);
+            return View(todaysRoute);
+        }
+
+        [HttpGet]
+        public ActionResult DayFive()
+        {
+            int dayOfRoute = 5;
+            GenerateRouteByDay(dayOfRoute);
+            return View(todaysRoute);
+        }
+
+
+        public List<DriverRoute> GenerateRouteByDay(int dayOfRoute)
+        {
+            context.Database.ExecuteSqlCommand("TRUNCATE TABLE [DriverRoutes]");
+            
+            var driverToFind = User.Identity.GetUserId();
+            Employee employeeRoute = context.Employees.Where(u => u.ApplicationId == driverToFind).SingleOrDefault();
+            var customerPickupDay = context.Customers.Include(d => d.DaysOfTheWeek.Weekday);
+            var customersInRoute = context.Customers.Include(d => d.DaysOfTheWeek).Where(c => c.Zip == employeeRoute.Route && c.DaysOfTheWeek.Id == dayOfRoute);
+            foreach (var c in customersInRoute)
+            {
+                DriverRoute driverRoute = new DriverRoute()
+                {
+                    EmployeeId = employeeRoute.ID,
+                    CustomerId = c.ID
+                };
+                context.DriverRoutes.Add(driverRoute);
+            }
+            context.SaveChanges();
+            var todaysRoute = context.DriverRoutes.Include(d => d.Employee).Include(c => c.Customer).ToList();
+            return todaysRoute;
         }
 
         [HttpGet]
