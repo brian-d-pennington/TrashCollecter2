@@ -4,7 +4,7 @@
     ViewBag.Title = "DayOne";
 }
 
-<h2>DayOne</h2>
+<h2>Monday's Route</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,17 +23,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EmployeeId)
+            @Html.DisplayFor(modelItem => item.Employee.Route)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CustomerId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.DisplayFor(modelItem => item.Customer.StreetAddress)
         </td>
     </tr>
 }
 
 </table>
+<p>
+    @Html.ActionLink("Back to Today's Route", "Index")
+</p>

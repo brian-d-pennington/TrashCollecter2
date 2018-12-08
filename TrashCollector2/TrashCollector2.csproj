@@ -311,6 +311,7 @@
     <Content Include="Views\DriverRoute\DayThree.cshtml" />
     <Content Include="Views\DriverRoute\DayFour.cshtml" />
     <Content Include="Views\DriverRoute\DayFive.cshtml" />
+    <Content Include="Views\DriverRoute\NoCustomers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,38 @@
-﻿
+﻿@model IEnumerable<TrashCollector2.Models.DriverRoute>
+
 @{
     ViewBag.Title = "DayThree";
 }
 
-<h2>DayThree</h2>
+<h2>Wednesday's Route</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Driver Route (by Zipcode)")
+        </th>
+        <th>
+            @Html.Label("Customer Addresses")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Route)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.StreetAddress)
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back to Today's Route", "Index")
+</p>

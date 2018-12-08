@@ -14,7 +14,7 @@ namespace TrashCollector2.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
-        public List<DriverRoute> todaysRoute;
+        List<DriverRoute> todaysRoute;
 
         // GET: DriverRoute
         [HttpGet]
@@ -43,52 +43,95 @@ namespace TrashCollector2.Controllers
         [HttpGet]
         public ActionResult DayOne()
         {
-            int dayOfRoute = 1;
-            GenerateRouteByDay(dayOfRoute);
-            return View(todaysRoute);
+            try
+            {
+                string dayOfRoute = "Monday";
+                GenerateRouteByDay(dayOfRoute);
+                return View(todaysRoute);
+            }
+            catch
+            {
+                return View("NoCustomers");
+            }
+
+            
         }
 
         [HttpGet]
         public ActionResult DayTwo()
         {
-            int dayOfRoute = 2;
-            GenerateRouteByDay(dayOfRoute);
-            return View(todaysRoute);
+            try
+            {
+                string dayOfRoute = "Tuesday";
+                GenerateRouteByDay(dayOfRoute);
+                return View(todaysRoute);
+            }
+            catch
+            {
+                return View("NoCustomers");
+            }
+
+            
         }
 
         [HttpGet]
         public ActionResult DayThree()
         {
-            int dayOfRoute = 3;
-            GenerateRouteByDay(dayOfRoute);
-            return View(todaysRoute);
+            try
+            {
+                string dayOfRoute = "Wednesday";
+                GenerateRouteByDay(dayOfRoute);
+                return View(todaysRoute);
+            }
+            catch
+            {
+                return View("NoCustomers");
+            }
+
+            
         }
 
         [HttpGet]
         public ActionResult DayFour()
         {
-            int dayOfRoute = 4;
-            GenerateRouteByDay(dayOfRoute);
-            return View(todaysRoute);
+            try
+            {
+                string dayOfRoute = "Thursday";
+                GenerateRouteByDay(dayOfRoute);
+                return View(todaysRoute);
+            }
+            catch
+            {
+                return View("NoCustomers");
+            }
+            
         }
 
         [HttpGet]
         public ActionResult DayFive()
         {
-            int dayOfRoute = 5;
-            GenerateRouteByDay(dayOfRoute);
-            return View(todaysRoute);
+            try
+            {
+                string dayOfRoute = "Friday";
+                GenerateRouteByDay(dayOfRoute);
+                return View(todaysRoute);
+            }
+            catch
+            {
+                return View("NoCustomers");
+            }
+            
         }
 
 
-        public List<DriverRoute> GenerateRouteByDay(int dayOfRoute)
+        public List<DriverRoute> GenerateRouteByDay(string dayOfRoute)
         {
             context.Database.ExecuteSqlCommand("TRUNCATE TABLE [DriverRoutes]");
             
             var driverToFind = User.Identity.GetUserId();
             Employee employeeRoute = context.Employees.Where(u => u.ApplicationId == driverToFind).SingleOrDefault();
             var customerPickupDay = context.Customers.Include(d => d.DaysOfTheWeek.Weekday);
-            var customersInRoute = context.Customers.Include(d => d.DaysOfTheWeek).Where(c => c.Zip == employeeRoute.Route && c.DaysOfTheWeek.Id == dayOfRoute);
+            var customersInRoute = context.Customers.Include(d => d.DaysOfTheWeek).Where(c => c.Zip == employeeRoute.Route && c.DaysOfTheWeek.Weekday == dayOfRoute);
             foreach (var c in customersInRoute)
             {
                 DriverRoute driverRoute = new DriverRoute()
@@ -116,7 +159,7 @@ namespace TrashCollector2.Controllers
             var routeComplete = context.DriverRoutes.Where(r => r.ID == id).Single();
             int localId = routeComplete.CustomerId;
             Customer customerToCharge = context.Customers.Where(c => c.ID == localId).Single();
-            customerToCharge.AccumulatedCharges = 12.50;
+            customerToCharge.AccumulatedCharges += 12.50;
             context.DriverRoutes.Remove(routeComplete);
             context.SaveChanges();
 

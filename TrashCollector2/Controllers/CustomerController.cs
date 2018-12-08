@@ -31,17 +31,18 @@ namespace TrashCollector2.Controllers
             var loggedInCustomer = context.Customers.Where(c => c.ID == id).Single();
             loggedInCustomer.Days = context.DaysOfTheWeeks.ToList();
 
-            loggedInCustomer.Day = context.Customers.Select(d => d.Day).Single();
-            loggedInCustomer.Month = context.Customers.Select(d => d.Month).Single();
-            loggedInCustomer.Year = context.Customers.Select(d => d.Year).Single();
+            loggedInCustomer.Day = context.Customers.Where(c => c.ID == id).Select(d => d.Day).Single();
+            loggedInCustomer.Month = context.Customers.Where(c => c.ID == id).Select(d => d.Month).Single();
+            loggedInCustomer.Year = context.Customers.Where(c => c.ID == id).Select(d => d.Year).Single();
 
-            loggedInCustomer.Day2 = context.Customers.Select(d => d.Day2).Single();
-            loggedInCustomer.Month2 = context.Customers.Select(d => d.Month2).Single();
-            loggedInCustomer.Year2 = context.Customers.Select(d => d.Year2).Single();
+            loggedInCustomer.Day2 = context.Customers.Where(c => c.ID == id).Select(d => d.Day2).Single();
+            loggedInCustomer.Month2 = context.Customers.Where(c => c.ID == id).Select(d => d.Month2).Single();
+            loggedInCustomer.Year2 = context.Customers.Where(c => c.ID == id).Select(d => d.Year2).Single();
 
-            loggedInCustomer.Day3 = context.Customers.Select(d => d.Day3).Single();
-            loggedInCustomer.Month3 = context.Customers.Select(d => d.Month3).Single();
-            loggedInCustomer.Year3 = context.Customers.Select(d => d.Year3).Single();
+            loggedInCustomer.Day3 = context.Customers.Where(c => c.ID == id).Select(d => d.Day3).Single();
+            loggedInCustomer.Month3 = context.Customers.Where(c => c.ID == id).Select(d => d.Month3).Single();
+            loggedInCustomer.Year3 = context.Customers.Where(c => c.ID == id).Select(d => d.Year3).Single();
+            context.SaveChanges();
             return View(loggedInCustomer);
         }
 
