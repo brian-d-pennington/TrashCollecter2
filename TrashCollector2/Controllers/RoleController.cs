@@ -17,19 +17,19 @@ namespace TrashCollector2.Controllers
         public ActionResult Index()
         {
 
-            //if (User.Identity.IsAuthenticated)
-            //{
+            if (User.Identity.IsAuthenticated)
+            {
 
 
-            //    if (!isAdminUser())
-            //    {
-            //        return RedirectToAction("Index", "Home");
-            //    }
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
+                if (!isAdminUser())
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             var Roles = context.Roles.ToList();
             return View(Roles);

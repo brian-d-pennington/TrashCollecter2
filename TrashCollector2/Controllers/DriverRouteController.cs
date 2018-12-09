@@ -14,107 +14,101 @@ namespace TrashCollector2.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
-        public List<DriverRoute> todaysRoute;
+        private List<DriverRoute> todaysRoute;
         
         // GET: DriverRoute
         [HttpGet]
         public ActionResult Index()
         {
-            try
-            {
-                string dayOfRoute = DateTime.Today.DayOfWeek.ToString();
-                GenerateRouteByDay(dayOfRoute);
-                return View(todaysRoute);
-            }
-            catch
+            string dayOfRoute = DateTime.Today.DayOfWeek.ToString();
+            GenerateRouteByDay(dayOfRoute);
+            if (todaysRoute.Count == 0)
             {
                 return View("NoCustomers");
+            }
+            else
+            {
+                return View(todaysRoute);
             }
         }
 
         [HttpGet]
         public ActionResult DayOne()
         {
-            try
-            {
-                string dayOfRoute = "Monday";
-                GenerateRouteByDay(dayOfRoute);
-                return View(todaysRoute);
-            }
-            catch
+            string dayOfRoute = "Monday";
+            GenerateRouteByDay(dayOfRoute);
+            if (todaysRoute.Count == 0)
             {
                 return View("NoCustomers");
+            }
+            else
+            {
+                return View(todaysRoute);
             }
         }
 
         [HttpGet]
         public ActionResult DayTwo()
         {
-            try
-            {
-                string dayOfRoute = "Tuesday";
-                GenerateRouteByDay(dayOfRoute);
-                return View(todaysRoute);
-            }
-            catch
+            string dayOfRoute = "Tuesday";
+            GenerateRouteByDay(dayOfRoute);
+            if (todaysRoute.Count == 0)
             {
                 return View("NoCustomers");
             }
-
-            
+            else
+            {
+                return View(todaysRoute);
+            }
         }
 
         [HttpGet]
         public ActionResult DayThree()
         {
-            try
-            {
-                string dayOfRoute = "Wednesday";
-                GenerateRouteByDay(dayOfRoute);
-                return View(todaysRoute);
-            }
-            catch
+            string dayOfRoute = "Wednesday";
+            GenerateRouteByDay(dayOfRoute);
+            if (todaysRoute.Count == 0)
             {
                 return View("NoCustomers");
             }
-
-            
+            else
+            {
+                return View(todaysRoute);
+            }
         }
 
         [HttpGet]
         public ActionResult DayFour()
         {
-            try
-            {
-                string dayOfRoute = "Thursday";
-                GenerateRouteByDay(dayOfRoute);
-                return View(todaysRoute);
-            }
-            catch
+            string dayOfRoute = "Thursday";
+            GenerateRouteByDay(dayOfRoute);
+            if (todaysRoute.Count == 0)
             {
                 return View("NoCustomers");
             }
-            
+            else
+            {
+                return View(todaysRoute);
+            }
         }
 
         [HttpGet]
         public ActionResult DayFive()
         {
-            try
-            {
-                string dayOfRoute = "Friday";
-                GenerateRouteByDay(dayOfRoute);
-                return View(todaysRoute);
-            }
-            catch
+            string dayOfRoute = "Friday";
+            GenerateRouteByDay(dayOfRoute);
+            if (todaysRoute.Count == 0)
             {
                 return View("NoCustomers");
             }
-            
+            else
+            {
+                return View(todaysRoute);
+            }
         }
 
 
-        public List<DriverRoute> GenerateRouteByDay(string dayOfRoute)
+        private List<DriverRoute> GenerateRouteByDay(string dayOfRoute)
         {
             context.Database.ExecuteSqlCommand("TRUNCATE TABLE [DriverRoutes]");
             
