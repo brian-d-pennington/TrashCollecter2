@@ -158,22 +158,22 @@ namespace TrashCollector2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var rowsToCheck = context.Employees.Select(c => c.Email); //employee should be in database before being
-                foreach (string r in rowsToCheck)                         //allowed to register
-                {
-                    if (model.UserRoles != "Employee")
-                    {
-                        break;
-                    }
-                    else if (model.UserRoles == "Employee" && model.Email == r)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        return View("Error");  // THIS SECTION GETS COMMENTED OUT
-                    }                          // WHEN ADMIN USER REGISTERS EMPLOYEES
-                }
+                //var rowsToCheck = context.Employees.Select(c => c.Email); //employee should be in database before being
+                //foreach (string r in rowsToCheck)                         //allowed to register
+                //{
+                //    if (model.UserRoles != "Employee")
+                //    {
+                //        break;
+                //    }
+                //    else if (model.UserRoles == "Employee" && model.Email == r)
+                //    {
+                //        break;
+                //    }
+                //    else
+                //    {
+                //        return View("Error");  // THIS SECTION GETS COMMENTED OUT
+                //    }                          // WHEN ADMIN USER REGISTERS EMPLOYEES
+                //}
 
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);

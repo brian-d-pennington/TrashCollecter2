@@ -22,14 +22,7 @@ namespace TrashCollector2.Controllers
         {
             string dayOfRoute = DateTime.Today.DayOfWeek.ToString();
             GenerateRouteByDay(dayOfRoute);
-            if (todaysRoute.Count == 0)
-            {
-                return View("NoCustomers");
-            }
-            else
-            {
-                return View(todaysRoute);
-            }
+            return View(todaysRoute);
         }
 
         [HttpGet]
